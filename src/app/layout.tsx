@@ -11,13 +11,18 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Gate of Babylon",
-  description: "Gate of Babylon, the collection of developer tools and resources.",
+  description:
+    "Gate of Babylon, the collection of developer tools and resources.",
 };
 
 export default function RootLayout({
   children,
+  menu,
+  showcase,
 }: Readonly<{
   children: React.ReactNode;
+  menu: React.ReactNode;
+  showcase: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -25,7 +30,11 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className={inter.className}>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          {children}
+          {menu}
+          {showcase}
+        </MantineProvider>
       </body>
     </html>
   );
